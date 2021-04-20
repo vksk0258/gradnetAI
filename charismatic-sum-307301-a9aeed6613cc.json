@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "charismatic-sum-307301",
+  "private_key_id": "a9aeed6613cc0c5240a6def4d5f2ab9d50707556",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQCyA2w8ObjCqE71\nWreZi0wy8p86Oz7wVt4/JJehc9nR72E/btKqMoxkxH/FcNqGePsb8oIjpIK80DkR\ncCHIZ5TCV7xAgTU4JhGx8+bEY9sPEYznqGtm6XZ+N7McjTHqELRzDN/smK/QnpIt\nCHnhleX33WIMWN0s2YFoLkBCsLCPlUYxW141iPl5FF0B4r+E2qImrinAGhD3Xd1p\nXXfKCJW9vtVos12iqqpN7cRD7P4LLLOSL2GGTvEfGo/o1v3LAuWfsFODushQty9t\np3zw16hBm49UWRnL68vqgRmGv1OrSo6WcbT8+uxKQGjaac/WlSXl4wYalzTbeKgh\nuS66KgHdAgMBAAECggEAF1lDlRKtHTseQChJ9KXEtNoF8Ilc1AFQ3U9bZB3h8BtJ\n0hwjHZfLulvbtnX687Bin2PLlgk57LITCip/A94yMNt5IazQ4jB8Ga84EYJXdT6E\nEM6SZ8kvdZaws4oBhgXy5TRHGq1cQizKV4XJFsGmjEBJX/035W4R/ywx2Y17Wxmt\nG454D82UNnIe70Qku6ICoGMvBb1xw+/PJ1pULd7WjTxbEnLCIAtQacr7f/6D3Un0\nhZGdCgh9dJqH3JJOKUD/bVM3hXoSNZ/OC25rGFF2Oj0rWvW4IU+r1cZcGhMQPjzz\nWctsO3sg2URWdT3CritpA0AeFMk68eWOTdP7gdTjsQKBgQDlDDqjVQvWV4tdqCYX\nZJ2rqYa7kLR1uoxb0n08RxLbrcQMECwOl3mofO9TrZYSeXrOmAQmrDbkk1nQVoXJ\nR2hsa9O/n2ObUyjpLqwJZoLwXGm8rwoGC2ho6u7P842SbKTCvIP3MmF5RZoc1gZt\ncvHmMStCrsHB42c6U+sMP7PhjwKBgQDG9dkHKyGmDH/nIHcWcUfa5kmjDJkzy7jB\nWKX+g3c0C13FNkj9PYncYMvF6U9M5nU0r6bsW+UUIylTjT/ZwPpZU7VcPWYTYzqK\nDQ4UKKG3bX3ldrLuYCWZ3zkgOcGWzCH/HMtfehb/VfoM1XJG/hSuLMMo45M5OCR7\npAsWRgjX0wKBgBNEgRZGTDWeramWQIYNP7o2C5BxrsyMgcwjm8dbTznNl0VQgvRD\nR8elothOLOam8263mPnL2N5HivGcpap16FHejDR9avqg9zsOYwhzaCZiD78Aln5F\nrWXOBYLWwR0FKKL9CrjbsxlpgnpUgrvoRHMRxcrZOpFd2MwuTQJ9xVr/AoGAS1mI\nXAKlt7E8L1hIQaOdRvW4JZv72XXp/q+IDh/T4U38sVehxOatc1zlT4rQkZsmAFIV\nsaYL19iJKi9wYxOGvJXLNae7JNSLswTGtDO/Kyy4ZVLS6RxYoTG8/Mti2a1toqRR\nEVO3qfPxwzKDGQfY5S3mq3GkrCLrDjhOSp0zdCkCgYEA3oyJJpg57RrQyAXt/yEf\nJR0/eY2t77DJDUhTjN8KpWLXicFalSVSj0/1bXY92R9xijEpe0glPPkDYsxRuZ5M\npxYR4PDXY0zs7ccmKwqXkRp0z1tBX24iTMfK4rsCn40Pv81+xyiHr+b+IvMkAL8z\nXOfsdiQtq1c7rybIghZ0WC0=\n-----END PRIVATE KEY-----\n",
+  "client_email": "giltaek@charismatic-sum-307301.iam.gserviceaccount.com",
+  "client_id": "110013612413141933427",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/giltaek%40charismatic-sum-307301.iam.gserviceaccount.com"
+}
