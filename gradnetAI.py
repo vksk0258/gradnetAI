@@ -1,102 +1,79 @@
-import io
+import pandas as pd
+import numpy as np
 import os
-import PyPDF2
-import pikepdf
-from google.cloud import vision_v1
-from openpyxl import Workbook
-# 한 번에 최대 5페이지까지 text 추출 가능
+import re
+from nltk.corpus import stopwords
+from sklearn.feature_extraction.text import CountVectorizer
+from sklearn.model_selection import train_test_split
+from sklearn.ensemble import RandomForestClassifier
 
-# 첫 페이지는 .txt 파일을 생성해주어야 하므로 1~5 페이지는 따로 처리
-def pdf2txt_w(path_num):
-    pages = [1,2,3,4,5]
-    requests = [{"input_config": input_config, "features": features, "pages": pages}]
-    response = client.batch_annotate_files(requests=requests)
+def preprocessing(text, remove_stopwords = False ): 
+    # 불용어 제거는 옵션으로 선택 가능하다.
+    
 
-    for num, image_response in enumerate(response.responses[0].responses):
-#         print(u"Full text: {}".format(image_response.full_text_annotation.text))
-        if (num==0):
-            with open(destination_path[path_num] + file_name[0:-4] + '.txt', "w",encoding='UTF-8') as f:
-                f.write(response.responses[0].responses[num].full_text_annotation.text)
-        else:
-            with open(destination_path[path_num] + file_name[0:-4] + '.txt', "a",encoding='UTF-8') as f:
-                f.write(response.responses[0].responses[num].full_text_annotation.text)
+    # 2. 영어가 아닌 특수문자들을 공백(" ")으로 바꾸기
+    text = re.sub("[^ ㄱ-ㅣ가-힣A-Za-z0-9]", " ",text)
 
-                
-# 6페이지 이상인 파일은 아래 함수를 호출하여 텍스트 추출
-def pdf2txt(page, path_num):
-    pages = [i for i in range(page, page+5)]
-    requests = [{"input_config": input_config, "features": features, "pages": pages}]
-    response = client.batch_annotate_files(requests=requests)
+    # 3. 대문자들을 소문자로 바꾸고 공백단위로 텍스트들 나눠서 리스트로 만든다.
+    words = text.lower().split()
 
-    for num, image_response in enumerate(response.responses[0].responses):
-#         print(u"Full text: {}".format(image_response.full_text_annotation.text))
+    if remove_stopwords: 
+        # 4. 불용어들을 제거
+    
+        #영어에 관련된 불용어 불러오기
+        stops = set(stopwords.words("english"))
+        # 불용어가 아닌 단어들로 이루어진 새로운 리스트 생성
+        words = [w for w in words if not w in stops]
+        # 5. 단어 리스트를 공백을 넣어서 하나의 글로 합친다.	
+        clean_review = ' '.join(words)
 
-        with open(destination_path[path_num] + file_name[0:-4] + '.txt', "a",encoding='UTF-8') as f:
-                f.write(response.responses[0].responses[num].full_text_annotation.text)
+    else: # 불용어 제거하지 않을 때
+        clean_review = ' '.join(words)
 
-#######################################################################
-## source_path와 destination_path에 폴더가 들어가 있으면 에러남
-## source_path엔 .pdf 파일만! destination_path는 가급적 빈 폴더!
-source_path = ["./input/"]
-destination_path = ["./output/"]
-#######################################################################
+    return clean_review
 
-file_count = [0,1]
-path_num = 1
-file_list = os.listdir(source_path[0])
+DATA_IN_PATH = './data_in/'
+DATA_OUT_PATH = './data_out/'
+TRAIN_CLEAN_DATA = 'train_clean.csv'
+TEST_SIZE = 0.2
+RANDOM_SEED = 42
 
-for path_num in range(1):
+train_data = pd.read_csv(DATA_IN_PATH + TRAIN_CLEAN_DATA)
 
-    for i in range(len(file_list)):
-        file_name = file_list[i]
-        client = vision_v1.ImageAnnotatorClient()
-        file_path = source_path[path_num] + file_name
+# 결측값 제거를 위해 판다스 데이터프레임으로 변환
+train_data1 = pd.DataFrame(train_data)
 
-        # Supported mime_type: application/pdf, image/tiff, image/gif
-        mime_type = "application/pdf"
+train_data = train_data1.dropna()
 
-        try:
-            with io.open(file_path, "rb") as f:
-                content = f.read()
-                pdf_reader = PyPDF2.PdfFileReader(open(file_path, "rb"), strict = False)
-        #         pdf_reader = PyPDF2.PdfFileReader(f)
-                num_of_pages = pdf_reader.numPages
+texts = list(train_data['text'])
+y = np.array(train_data['label'])
 
-        except:
-            output_path = source_path[path_num] + "decrypted_" + file_list[i]
-            file_path = source_path[path_num] + file_name
-            pdf = pikepdf.Pdf.new()
+vectorizer = CountVectorizer(analyzer = "word", max_features = 5000) 
 
-            for _, page in enumerate(input_pdf.pages):
-                pdf.pages.append(page)
+train_data_features = vectorizer.fit_transform(texts)
 
-            pdf.save(output_path)
-            input_pdf.close()
-            print("saved at : {}".format(output_path))
+train_input, eval_input, train_label, eval_label = train_test_split(train_data_features, y, test_size=TEST_SIZE, random_state=RANDOM_SEED)
 
-            file_path = source_path[path_num] + "decrypted_" + file_list[i]
+# 랜덤 포레스트 분류기에  100개 의사 결정 트리를 사용한다.
+forest = RandomForestClassifier(n_estimators = 100) 
 
-            with io.open(file_path, "rb") as f:
-                content = f.read()
-                pdf_reader = PyPDF2.PdfFileReader(open(file_path, "rb"), strict = False)
-        #         pdf_reader = PyPDF2.PdfFileReader(f)
-                num_of_pages = pdf_reader.numPages
+# 단어 묶음을 벡터화한 데이터와 정답 데이터를 가지고 학습을 시작한다.
+forest.fit( train_input, train_label )
+
+r = open("./output/TOEIC.txt", 'rt', encoding='UTF-8')
+testTEXT = []
+testTEXT.append(preprocessing(r.read(), remove_stopwords = True))
+
+test_data_features = vectorizer.transform(testTEXT)
 
 
-        input_config = {"mime_type": mime_type, "content": content}
-        features = [{"type_": vision_v1.Feature.Type.DOCUMENT_TEXT_DETECTION}]
+if not os.path.exists(DATA_OUT_PATH):
+    os.makedirs(DATA_OUT_PATH)
+    
+# 위에서 만든 랜덤 포레스트 분류기를 통해 예측값을 가져온다.
+result = forest.predict(test_data_features)
 
-        for p in range(1, num_of_pages+1, 5):
-            if(p==1):
-                pdf2txt_w(path_num)
-            else:
-                pdf2txt(p, path_num)
-
-txt_source_path = destination_path[0]
-txt_file_name = os.listdir(txt_source_path)
-path = txt_source_path + txt_file_name[0]
-r = open(path, 'rt', encoding='UTF-8')
-print( r.read() )
-
-# 엑셀 파일에 하나로 합치기
-
+if result[0] == 0 :
+    print("TOEIC성적표 입니다.")
+else:
+    print("TOEIC성적표가 아닙니다.")
