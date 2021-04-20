@@ -14,7 +14,6 @@ destination_path = "./output/"
 file_list = os.listdir(source_path)
 
 def create_app():
-    app = Flask(__name__)
 
     app = Flask(__name__)  # Flask 객체 선언, 파라미터로 어플리케이션 패키지의 이름을 넣어줌.
     @app.route('/')  # 데코레이터 이용, '/hello' 경로에 클래스 등록
@@ -22,7 +21,6 @@ def create_app():
     def hello():
         name = str(request.args['name'])
         file_name = name + ".pdf"
-        print('a')
 
         for i in range(len(file_list)):
             client = vision_v1.ImageAnnotatorClient()
