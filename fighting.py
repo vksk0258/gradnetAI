@@ -22,6 +22,7 @@ def create_app():
     def hello():
         name = str(request.args['name'])
         file_name = name + ".pdf"
+        print('a')
 
         for i in range(len(file_list)):
             client = vision_v1.ImageAnnotatorClient()
