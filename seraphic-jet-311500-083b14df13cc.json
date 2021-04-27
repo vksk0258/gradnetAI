@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "seraphic-jet-311500",
+  "private_key_id": "083b14df13cc11f25c2251e7fe8550edabee4707",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQCoaGnT9Cv0w6kB\n5AERWkJ2uti3CdRx2byY12irL7xw0m/oCPKpQj+BrE9akZKun3kpL5E3Wi/6K6VC\nTGGIDtn2NSwg/fbvT/C1sIsspClKFaYfdbrE5h0Pz/bF04P45zT5isSWpX6Q1l1N\nWiFiCVP1LVwC4ruvlH51Rr46YcAg74WoOVm8EeClotUiaE6VLh+6YZZMdaCa4aC6\nfKMtIGsiOREC1xrUMoKgVhkQiVQGKKTopp3apDFtURw0FGHJQ+/J28JXvRYgB4Tb\nFGdzn3lPHXExcI4NctB2VqMq1GCPcfZvTn190+7SBwkCLCxiH5+tVU2sPCGQf8Bu\n3vm1c8qxAgMBAAECggEAHn2FB5ByMucH3uVCgjtGxEtQ+FbJxXEoEb4SX8gNRJn9\nE9Qm5xks+VPSrDGmDoKmA5xunMhx3kfvrEC6+dDCiq6W1kRU5IAjMyoLEKKKLTUd\nNh3xGjwVb+r1oVyJzNNDhpimviWpdByzmNEkMSVCM6YqPgWB+KiYerA7ucM/71ZS\n7gOzK3Qfo+mxStn6VVjhWeGZYRD3jzH6iSf09Samk17PWIH1GDFEywJ0eXXyi3F1\nOSRIloI8wUqvIdTwrqjWXAFRmlgZg+mPKKg8mwZtpDWXklUDOj0lDiFYrg5Qc9my\nVuzn3IFugiIFOEAYTA6GBw3ZhDewnltAYBVZHOISdwKBgQDjHw5cbhKKceN0xNYu\ntd9ZELHfSlwWmWVSyziL3D1q7d1N1UjFcFxRey4ttVyz3Jw58V22a1dwHzeeBaL+\nbpNa9/lg655XSwtmR+1kGcaLT5AweWlPpUL8cnF+3yupqn2FvXTSyiq6oV3ZbYtT\nrT5Dm49EPklFUZb2P1DQ7lBpTwKBgQC90jJwkQ60/eZLJ/uqiiKbfwBClcj2xgCF\n1TxX2E0EJv6/TGFeZPYn56wUDHhHX0KCMIB/jgxWN1bPphujKR7UeE+qy8Il3SZB\nEZ4PItoBPYV4CgiczbupRNai9yN0jthd6TIu+F8ai+8XsOgTa4oY3HQHNK8K2NnS\nifYPncOL/wKBgQC95BdTvEwQKIxt8qzIvRMSGl09PaSk2HfYs0SB2xAWuO2Qx8Ri\nH0FwdrbzTHFHiCmuYFljzXd7rP4JRtkyNS1Kn42HNThb78iGKZkXWl2f2FPL05bz\nGk9ZVi4CT4DoCD2OdgqYuqLjC0u2IFqfCXfHeuZbvl/wbvjyxZlCNh5RDQKBgDZY\nVp6JuScyRdugj9nMgIn6O03U6ltUZtPqL8OKpsoYi/ii2oGW8C6OkmKPC2SLrlPt\npOxf88I/R7hdey4kWLJF27Evct86SHh6ncEBnl6aiXrLjJmwARk+HyE7FkiJmQKS\nAA8Yhsnn5ETpHhhpQnlJrGJfv/mgCgTQAMWJynFrAoGBAMzSvCFA3OeqvPduDmk1\niZJ5RM8jnAKjWfs0fyMCNzE3Ypx47s4U8rxzN0mvAXBqHLnd8WhZmtfqxkuHQ3c+\nZGEyAMdewYtTr66et8ur3s1TthsSvEBsCXFP3aBs1FE7S9POL87HZhdlcdbhVLAT\nKGu6sDnGFFF6Lu9u0aknXU+h\n-----END PRIVATE KEY-----\n",
+  "client_email": "apex-719@seraphic-jet-311500.iam.gserviceaccount.com",
+  "client_id": "101103479957810610476",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/apex-719%40seraphic-jet-311500.iam.gserviceaccount.com"
+}
